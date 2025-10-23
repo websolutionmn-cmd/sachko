@@ -206,3 +206,128 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cartNav = document.querySelector('a[href="#shop"].btn'); // копчето во менито
+  const shopSection = document.getElementById('shop');
+  const cartTop = document.getElementById('cartTop');
+
+  if (cartNav && shopSection && cartTop) {
+    cartNav.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // отвори ја продавницата ако не е активна
+      location.hash = '#shop';
+
+      // почекај малку пред да скролира
+      setTimeout(() => {
+        cartTop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 500);
+    });
+  }
+});
+const productsEl = document.getElementById('products');
+const loadMoreBtn = document.getElementById('loadMore');
+
+let currentAll = [];     // целата листа (по важечките филтри)
+let renderedCount = 0;   // колку се прикажани во моментов
+const PAGE = 10;
+
+// Повикај ова само кога се менуваат филтрите/сортирањето
+async function fetchProductsWithFilters() {
+  // земи ги тековните вредности од филтрите (ако ги имаш)
+  const cat = document.getElementById('catFilter')?.value || '';
+  const st  = document.getElementById('statusFilter')?.value || '';
+  const q   = document.getElementById('q')?.value || '';
+  const sort= document.getElementById('sortBy')?.value || '';
+
+  const params = new URLSearchParams();
+  if (cat) params.set('category', cat);
+  if (st && st !== 'all') params.set('status', st);
+  if (q) params.set('q', q);
+  if (sort) params.set('sort', sort); // ако на backend го поддржуваш, ок; ако не — сортирај на фронт
+
+  const res = await fetch('/api/products?' + params.toString(), { cache: 'no-store' });
+  currentAll = await res.json();
+
+  // ако треба локално сортирање:
+  if (sort === 'name_asc') currentAll.sort((a,b)=>a.name.localeCompare(b.name));
+  if (sort === 'name_desc') currentAll.sort((a,b)=>b.name.localeCompare(a.name));
+  if (sort === 'price_asc') currentAll.sort((a,b)=>Number(a.price)-Number(b.price));
+  if (sort === 'price_desc') currentAll.sort((a,b)=>Number(b.price)-Number(a.price));
+  if (sort === 'newest') currentAll.sort((a,b)=>Number(b.id)-Number(a.id));
+
+  // ресетирај приказ
+  renderedCount = 0;
+  productsEl.innerHTML = '';
+  renderNextPage(true);
+}
+
+// создава HTML за една картичка (искористи ги твоите полиња)
+function cardTpl(p) {
+  const isSold = (p.status || 'available') === 'soldout';
+  return `
+    <div class="card">
+      <img src="${p.imageUrl || '/img/logo.jpg'}" alt="${p.name}" />
+      <h4>${p.name}</h4>
+      <p>${p.description || ''}</p>
+      <div class="status ${isSold ? 'bad' : 'ok'}">${isSold ? '🔴 Распродадено' : '🟢 Достапно'}</div>
+      <b style="margin-top:6px">${p.price} MKD</b>
+      <div class="qty">
+        <label>Количина:</label>
+        <input type="number" min="1" step="1" value="1" ${isSold ? 'disabled' : ''}/>
+        <button class="btn full" ${isSold ? 'disabled' : ''}>Додај во кошничка</button>
+      </div>
+    </div>`;
+}
+
+// прикажува уште 10 без да ги брише претходните
+function renderNextPage(initial = false) {
+  const next = currentAll.slice(renderedCount, renderedCount + PAGE);
+  if (!next.length) {
+    // нема повеќе — сокриј го копчето
+    if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+    return;
+  }
+
+  const html = next.map(cardTpl).join('');
+  productsEl.insertAdjacentHTML('beforeend', html);  // <-- КЛУЧНО: додади, не заменувај
+
+  renderedCount += next.length;
+
+  // покажи/сокриј копче
+  if (loadMoreBtn) {
+    loadMoreBtn.style.display = (renderedCount >= currentAll.length) ? 'none' : 'inline-block';
+  }
+
+  // ако имаш логика што треба да се закачи на новододадените карти (пример клик на слика за fullscreen или "Додај во кошничка"),
+  // повикај ја тука, со productsEl како scope:
+  // hookCardImages(productsEl);
+  // hookAddToCartButtons(productsEl);
+}
+
+// handler за копчето „Прикажи повеќе“
+loadMoreBtn?.addEventListener('click', () => {
+  renderNextPage(false);
+  // скролни го копчето да остане во фокус
+  setTimeout(() => loadMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'end' }), 100);
+});
+
+// Поврзи ги филтрите за да прават fresh fetch + reset на пагинација
+document.getElementById('applyFilters')?.addEventListener('click', fetchProductsWithFilters);
+document.getElementById('clearFilters')?.addEventListener('click', () => {
+  document.getElementById('catFilter').value = '';
+  document.getElementById('statusFilter').value = 'all';
+  document.getElementById('q').value = '';
+  document.getElementById('sortBy').value = '';
+  fetchProductsWithFilters();
+});
+
+// иницијално вчитување кога ќе се отвори „Продавница“
+if (location.hash === '#shop') {
+  fetchProductsWithFilters();
+}
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#shop') fetchProductsWithFilters();
+});
+
