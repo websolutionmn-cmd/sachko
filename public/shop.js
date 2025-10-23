@@ -188,3 +188,21 @@ if(orderForm){
     }
   });
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const cartLink = document.querySelector('a[href="#cart"]');
+  const shopSection = document.getElementById('shop-end');
+
+  if (cartLink && shopSection) {
+    cartLink.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Осигури се дека продавницата е прикажана
+      location.hash = '#shop';
+
+      // Мало доцнење за да се вчита продавницата пред скролирање
+      setTimeout(() => {
+        shopSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 400);
+    });
+  }
+});

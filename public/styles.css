@@ -340,3 +340,166 @@ footer {
     margin-top: 16px;
   }
 }
+/* --- За мобилен приказ --- */
+@media (max-width: 768px) {
+  #shop .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* првиот ред: филтри | кошничка */
+    grid-template-areas:
+      "filters cart"
+      "products products";
+    align-items: start;
+  }
+
+  .filterbar {
+    grid-area: filters;
+  }
+
+  #cart {
+    grid-area: cart;
+    position: relative;
+    top: 0;
+  }
+
+  #products {
+    grid-area: products;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  #products .card {
+    padding: 8px;
+  }
+
+  #products .card img {
+    height: 150px;
+  }
+}
+@media (max-width:640px){
+  .nav{flex-direction:column; justify-content:center;}
+  .nav a{margin:6px 0; font-size:16px;}
+}
+/* ===== SHOP LAYOUT ===== */
+
+/* Десктоп: лево филтри+продукти, десно кошничка */
+#shop .shop-layout{
+  display:grid;
+  grid-template-columns: 3fr 1.2fr;
+  gap:24px;
+  align-items:start;
+}
+
+/* Производите на десктоп: 3 во ред (ги имаш веќе преку .grid) */
+
+/* Кошничка sticky САМО на поголеми екрани */
+@media (min-width:900px){
+  #cart{ position:sticky; top:96px; }
+}
+
+/* Мобилен: горе филтрите, па кошничка (полна ширина), па производи по два во ред */
+@media (max-width:768px){
+  /* прво – вертикален flow */
+  #shop .shop-layout{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .filterbar{ order:1; }
+
+  #cart{
+    order:2;
+    position:relative; top:0;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:#fff;
+    box-shadow:var(--shadow);
+    padding:14px;
+  }
+
+  /* производи секогаш по 2 во ред со стабилен grid */
+  #products{
+    order:3;
+    display:grid !important;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+  }
+
+  /* карти на мобилен – компактни */
+  #products .card{
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+  }
+  #products .card img{ height:160px; object-fit:cover; border-radius:8px; }
+  #products .card h4{ font-size:15px; }
+  #products .card p{ font-size:14px; }
+}
+
+
+
+
+/* --- МОБИЛЕН ИЗГЛЕД НА ПРОДАВНИЦАТА (филтри -> кошничка -> производи) --- */
+@media (max-width: 768px) {
+
+  /* Главна структура: сè е вертикално подредено */
+  #shop .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  /* Филтри први */
+  .filterbar {
+    order: 1;
+  }
+
+  /* Кошничка веднаш под филтрите */
+  #cart {
+    order: 2;
+    position: relative;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 14px;
+  }
+
+  /* Производи долу - две карти по ред */
+  #products {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  #products .card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #products .card img {
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  #products .card h4 {
+    font-size: 15px;
+  }
+
+  #products .card p {
+    font-size: 14px;
+  }
+}
