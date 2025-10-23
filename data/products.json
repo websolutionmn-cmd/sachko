@@ -1,0 +1,92 @@
+[
+  {
+    "id": "p1",
+    "name": "Чукче 500g",
+    "price": 350,
+    "description": "Метално чукче 500 грама.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "p2",
+    "name": "Шрафцигер PH2",
+    "price": 180,
+    "description": "Квалитетен крстест шрафцигер.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "p3",
+    "name": "Кабел 3x1.5",
+    "price": 45,
+    "description": "Цена по метар.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "elektrika",
+    "status": "available"
+  },
+  {
+    "id": "p4",
+    "name": "PVC цевка Ø20",
+    "price": 60,
+    "description": "Цена по метар.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "vodovod",
+    "status": "soldout"
+  },
+  {
+    "id": "p5",
+    "name": "Бела боја 5L",
+    "price": 1450,
+    "description": "Интерьер боја, мат.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "boi",
+    "status": "available"
+  },
+  {
+    "id": "p6",
+    "name": "Цемент 25kg",
+    "price": 270,
+    "description": "Градежен цемент.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "gradba",
+    "status": "available"
+  },
+  {
+    "id": "1761226445971",
+    "name": "test",
+    "price": 1,
+    "description": "test proizvod",
+    "imageUrl": "",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761226623341",
+    "name": "test2",
+    "price": 12,
+    "description": "test slika",
+    "imageUrl": "/uploads/1761226620472-558702198.jpg",
+    "category": "elektrika",
+    "status": "available"
+  },
+  {
+    "id": "1761233787435",
+    "name": "чешма",
+    "price": 1650,
+    "description": "тест",
+    "imageUrl": "/uploads/1761233784825-349355862.jpg",
+    "category": "",
+    "status": "available"
+  },
+  {
+    "id": "1761234588878",
+    "name": "Cece",
+    "price": 18,
+    "description": "test",
+    "imageUrl": "/uploads/1761234585039-156969535.jpg",
+    "category": "gradba",
+    "status": "available"
+  }
+]

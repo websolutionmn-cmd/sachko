@@ -1,0 +1,1 @@
+Ставете ги sachko.mp4 и zanas.mp4 во оваа папка (public/videos/).

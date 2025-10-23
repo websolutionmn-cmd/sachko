@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BAUMARKET SAČKO  — алати, електрика и градежен материјал</title>
+  <meta name="description" content="BAUMARKET SAČKO  — продавница за алати, електрика, водовод, бои и градежен материјал. Брза нарачка, јасна цена и професионална услуга."/>
+  <meta property="og:title" content="BAUMARKET SAČKO "/>
+  <meta property="og:description" content="Онлајн продавница — одберете производи и нарачајте за минута."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="/img/logo.jpg"/>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+<div id="loader">
+  <img src="/img/logo.jpg" alt="logo"/>
+  <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</div>
+
+<div id="toasts"></div>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <img src="/img/logo.jpg" alt="Sačko logo"/>
+      <b>BAUMARKET SAČKO </b>
+    </div>
+    <nav>
+      <a href="#home" data-nav>Дома</a>
+      <a href="#shop" data-nav>Продавница</a>
+      <a href="#about" data-nav>За Нас</a>
+      <a href="#shop" class="btn" data-nav>Кошничка (<span id="cartCount">0</span>)</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="hero-video">
+    <video autoplay muted loop playsinline id="bgVideo">
+      <source src="/videos/sachko.mp4" type="video/mp4"/>
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Добредојдовте во BAUMARKET SAČKO </h1>
+      <p>Квалитетни производи за вашиот дом и градилиште. Брза нарачка, јасна цена и професионална услуга.</p>
+      <div class="buttons">
+        <a class="btn" href="#shop">Продавница</a>
+        <a class="btn outline" href="tel:+38975411883">Побарај понуда директно</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop" class="section" style="display:none">
+    <div class="container" style="display:grid;grid-template-columns:3fr 1.2fr;gap:24px">
+      <div>
+        <h2>Сите производи</h2>
+        <div class="filterbar">
+          <select id="catFilter"><option value="">Сите категории</option></select>
+          <select id="statusFilter">
+            <option value="all">Сите статуси</option>
+            <option value="available">Достапно</option>
+            <option value="soldout">Распродадено</option>
+          </select>
+          <input type="search" id="q" placeholder="Барај производ..."/>
+          <select id="sortBy">
+            <option value="">Подреди по...</option>
+            <option value="name_asc">Име (A–Z)</option>
+            <option value="name_desc">Име (Z–A)</option>
+            <option value="price_asc">Цена (најниска прво)</option>
+            <option value="price_desc">Цена (највисока прво)</option>
+            <option value="newest">Најнови</option>
+          </select>
+          <button class="btn" id="applyFilters">Примени</button>
+          <button class="btn outline" id="clearFilters">Ресетирај</button>
+        </div>
+        <div id="products" class="grid"></div>
+      </div>
+      <aside id="cart" class="cart">
+        <h3>Кошничка</h3>
+        <ul id="cartList"></ul>
+        <p><b>Вкупно:</b> <span id="total">0</span> MKD</p>
+        <hr/>
+        <h4>Потврда на нарачка</h4>
+        <form id="orderForm" class="form">
+          <input id="name" placeholder="Име и презиме" required/>
+          <input id="phone" placeholder="Телефонски број" required/>
+          <input id="email" type="email" placeholder="Е-пошта" required/>
+          <button class="btn" type="submit">Испрати нарачка</button>
+          <small id="orderMsg"></small>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+<section id="about" class="section" style="display:none">
+  <div class="container">
+    <h2>За Нас</h2>
+    <p>
+      SAČKO BAUMARKET постои од 2016 година. Нудиме широка палета на алати, електрика,
+      водовод, бојадисување и градежен материјал.
+    </p>
+
+    <!-- Новата слика над видеото -->
+    <div class="about-image">
+      <img src="/img/sl1.jpg" alt="Нашата продавница" />
+    </div>
+
+    <!-- Видеото -->
+    <video autoplay muted loop playsinline class="about-video">
+      <source src="/videos/zanas.mp4" type="video/mp4"/>
+    </video>
+  </div>
+</section>
+
+
+</main>
+
+<!-- Fullscreen Image Modal -->
+<div id="imgModal">
+  <button class="close" aria-label="Затвори">✕</button>
+  <img alt="Преглед на слика"/>
+</div>
+
+<footer>
+  <div class="container section">
+    <div class="footer-logo-wrap">
+      <img src="/img/logo.jpg" alt="logo">
+      <div>
+        <b>BAUMARKET SAČKO</b><br/>
+        <small>...SINCE 2016...</small>
+      </div>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-buttons">
+        <a href="tel:+38975411883" class="footer-btn">
+          <i class="fa-solid fa-phone"></i> +389 75 411 883
+        </a>
+        <a href="mailto:nachev701@gmail.com" class="footer-btn">
+          <i class="fa-solid fa-envelope"></i> nachev701@gmail.com
+        </a>
+      </div>
+
+      <div class="footer-menu">
+        <a href="#home">Дома</a>
+        <a href="#shop">Продавница</a>
+        <a href="#about">За Нас</a>
+      </div>
+
+      <div class="footer-hours">
+        <b>Работно време</b><br/>
+        <small>Пон-Пет: 08:00–20:00<br/>Сабота: 09:00–17:00</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="/shop.js"></script>
+</body>
+</html>

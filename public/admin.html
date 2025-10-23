@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="mk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Админ | SAČKO BAUMARKET</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <img src="/img/logo.jpg" alt="logo"/><b>Admin</b>
+    </div>
+    <nav><a href="/">← Назад кон сајтот</a></nav>
+  </div>
+</header>
+
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <h3>Најава</h3>
+    <div class="login-error" id="loginError"></div>
+    <input id="u" placeholder="Корисничко име" autocomplete="username" value=""/>
+    <input id="p" type="password" placeholder="Лозинка" autocomplete="current-password" value=""/>
+    <button id="loginBtn">Најави се</button>
+  </div>
+</div>
+
+<main class="container section" style="padding-top:90px">
+  <h2>Производи</h2>
+
+  <div class="filterbar" style="margin:12px 0 16px">
+    <label>Подреди по:</label>
+    <select id="adminSort">
+      <option value="">---</option>
+      <option value="name_asc">Име (A–Z)</option>
+      <option value="name_desc">Име (Z–A)</option>
+      <option value="price_asc">Цена (најниска → највисока)</option>
+      <option value="price_desc">Цена (највисока → најниска)</option>
+      <option value="newest">Најнови</option>
+    </select>
+  </div>
+
+  <form id="newForm" class="form" style="max-width:680px;margin-bottom:22px">
+    <input id="pname" placeholder="Назив" required/>
+    <input id="pprice" type="number" min="0" step="0.01" placeholder="Цена (MKD)" required/>
+    <textarea id="pdesc" placeholder="Опис (опционално)"></textarea>
+    <select id="pcat"></select>
+    <select id="pstatus">
+      <option value="available">Достапно</option>
+      <option value="soldout">Распродадено</option>
+    </select>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <input type="file" id="pimage" accept="image/*"/>
+      <button class="btn outline" type="button" id="uploadBtn">Качи слика</button>
+      <small id="imgUrl"></small>
+    </div>
+    <button class="btn" type="submit">Додади производ</button>
+  </form>
+
+  <div id="list" class="grid"></div>
+</main>
+
+<script>
+// Frontend credentials:
+const ADMIN_USER = "martin";
+const ADMIN_PASS = "2468";
+const ADMIN_TOKEN = "admintoken"; // must match server
+
+let TOKEN = sessionStorage.getItem('adminToken') || '';
+
+function isAuthed(){ return TOKEN === ADMIN_TOKEN; }
+
+document.getElementById('loginBtn').onclick = async ()=>{
+  const u = document.getElementById('u').value.trim();
+  const p = document.getElementById('p').value.trim();
+  if(u===ADMIN_USER && p===ADMIN_PASS){
+    TOKEN = ADMIN_TOKEN;
+    sessionStorage.setItem('adminToken', TOKEN);
+    document.getElementById('loginWrap').classList.add('hidden');
+    await init();
+  } else {
+    document.getElementById('loginError').textContent = 'Неточни податоци';
+  }
+};
+
+if(isAuthed()){ document.getElementById('loginWrap').classList.add('hidden'); }
+
+async function adminFetch(url, options={}){
+  options.headers = Object.assign({}, options.headers||{}, {'x-auth': TOKEN});
+  return fetch(url, options);
+}
+
+async function loadCategories(selectEl){
+  const r = await fetch('/api/categories', {cache:'no-store'});
+  const cats = await r.json();
+  selectEl.innerHTML = '<option value="">Категорија</option>' + cats.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+}
+
+let currentAdminData = [];
+function applyAdminSort(items){
+  const sort = document.getElementById('adminSort').value;
+  const arr = [...items];
+  if(sort==='name_asc') arr.sort((a,b)=>a.name.localeCompare(b.name));
+  else if(sort==='name_desc') arr.sort((a,b)=>b.name.localeCompare(a.name));
+  else if(sort==='price_asc') arr.sort((a,b)=>Number(a.price)-Number(b.price));
+  else if(sort==='price_desc') arr.sort((a,b)=>Number(b.price)-Number(a.price));
+  else if(sort==='newest') arr.sort((a,b)=>Number(b.id)-Number(a.id));
+  return arr;
+}
+function renderList(){
+  const list = document.getElementById('list'); list.innerHTML = '';
+  const items = applyAdminSort(currentAdminData);
+  items.forEach(p=>{
+    const el = document.createElement('div'); el.className='card';
+    el.innerHTML = `
+      <img src="${p.imageUrl || '/img/logo.jpg'}" alt=""/>
+      <h4>${p.name}</h4>
+      <p>${p.price} MKD</p>
+      <p style="flex:1">${p.description||''}</p>
+      <small>Категорија: ${p.category||'-'}</small><br/>
+      <small>Статус: <b>${p.status||'available'}</b></small>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn outline" data-edit="${p.id}">Измени</button>
+        <button class="btn" data-del="${p.id}">Избриши</button>
+      </div>`;
+    list.appendChild(el);
+  });
+}
+document.getElementById('adminSort').onchange = renderList;
+
+async function loadAdminProducts(){
+  const res = await fetch('/api/products', {cache:'no-store'});
+  currentAdminData = await res.json();
+  renderList();
+}
+
+document.getElementById('uploadBtn').onclick = async () => {
+  const f = document.getElementById('pimage').files[0];
+  if(!f){ alert('Изберете слика'); return; }
+  const fd = new FormData(); fd.append('image', f);
+  const res = await adminFetch('/api/admin/upload', { method:'POST', body: fd });
+  const data = await res.json();
+  if(data.ok){
+    document.getElementById('imgUrl').textContent = data.url;
+    document.getElementById('imgUrl').dataset.url = data.url;
+  } else alert('Проблем при качување');
+};
+
+document.getElementById('newForm').onsubmit = async (e)=>{
+  e.preventDefault();
+  const body = {
+    name: document.getElementById('pname').value.trim(),
+    price: document.getElementById('pprice').value,
+    description: document.getElementById('pdesc').value.trim(),
+    imageUrl: document.getElementById('imgUrl').dataset.url || '',
+    category: document.getElementById('pcat').value,
+    status: document.getElementById('pstatus').value || 'available'
+  };
+  const res = await adminFetch('/api/admin/products', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+  if(res.ok){
+    e.target.reset(); document.getElementById('imgUrl').textContent=''; document.getElementById('imgUrl').dataset.url='';
+    await loadAdminProducts();
+    try { localStorage.setItem('catalog_refresh', String(Date.now())); } catch(e){}
+  } else alert('Грешка. Проверете дали сте логирани.');
+};
+
+document.addEventListener('click', async (e)=>{
+  if(e.target.closest('[data-del]')){
+    if(confirm('Да се избрише производот?')){
+      const id = e.target.closest('[data-del]').dataset.del;
+      const res = await adminFetch('/api/admin/products/'+id, {method:'DELETE'});
+      if(res.ok){ await loadAdminProducts(); try { localStorage.setItem('catalog_refresh', String(Date.now())); } catch(e){} }
+    }
+  }
+  if(e.target.closest('[data-edit]')){
+    const id = e.target.closest('[data-edit]').dataset.edit;
+    const p = currentAdminData.find(x=>x.id===id);
+    const name = prompt('Нов назив:', p?.name||'');
+    const price = prompt('Нова цена:', p?.price||'');
+    const description = prompt('Нов опис:', p?.description||'');
+    const category = prompt('Нова категорија (ID):', p?.category||'');
+    const status = prompt('Нов статус (available/soldout):', p?.status||'available');
+    const imageUrl = prompt('Нова слика (URL):', p?.imageUrl||'');
+    const body = {name, price, description, category, status, imageUrl};
+    const res = await adminFetch('/api/admin/products/'+id, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+    if(res.ok){ await loadAdminProducts(); try { localStorage.setItem('catalog_refresh', String(Date.now())); } catch(e){} }
+  }
+});
+
+async function init(){
+  await loadCategories(document.getElementById('pcat'));
+  await loadAdminProducts();
+}
+if(isAuthed()){ init(); }
+</script>
+</body>
+</html>
