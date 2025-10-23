@@ -88,5 +88,23 @@
     "imageUrl": "/uploads/1761239944692-69517278.PNG",
     "category": "alat",
     "status": "available"
+  },
+  {
+    "id": "1761245651428",
+    "name": "Clever - Glow сива (кратка)",
+    "price": 1299,
+    "description": "Clever - Glow сива, кратка",
+    "imageUrl": "/uploads/1761245650035-255303171.JPG",
+    "category": "",
+    "status": "soldout"
+  },
+  {
+    "id": "1761245705864",
+    "name": "Clever - Glow сива (TST)",
+    "price": 1199,
+    "description": "Clever - Glow сива (TST) test",
+    "imageUrl": "/uploads/1761245704721-757296749.jpg",
+    "category": "vodovod",
+    "status": "soldout"
   }
 ]
