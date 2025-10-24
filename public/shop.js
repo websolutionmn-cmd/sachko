@@ -87,6 +87,19 @@ function renderCart(){
     total += it.price*it.qty;
   });
   if(totalEl) totalEl.textContent = total.toFixed(2);
+  // Прикажи информација за достава
+const deliveryMsg = document.getElementById('deliveryMsg');
+if (deliveryMsg) {
+  if (total < 2000) {
+    const diff = (2000 - total).toFixed(0);
+    deliveryMsg.textContent = `🚚 За бесплатна достава недостасуваат уште ${diff} денари.`;
+    deliveryMsg.className = 'delivery red';
+  } else {
+    deliveryMsg.textContent = `✅ Бесплатна достава!`;
+    deliveryMsg.className = 'delivery green';
+  }
+}
+
   if(cartCount) cartCount.textContent = cart.reduce((s, x)=> s + x.qty, 0);
 }
 function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); renderCart(); }
