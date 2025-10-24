@@ -719,3 +719,18 @@ nav .btn {
 nav .btn span {
   color: #fff !important; /* бројот (0) да биде бел */
 }
+/* --- Delivery Info --- */
+.delivery {
+  font-weight: 600;
+  margin-top: 4px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.delivery.red {
+  color: #d62828; /* црвена */
+}
+
+.delivery.green {
+  color: #2a9d8f; /* зелена */
+}
