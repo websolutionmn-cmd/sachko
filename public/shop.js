@@ -497,3 +497,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, delay);
 });
 
+const hamburger = document.querySelector('.hamburger');
+const headerEl = document.querySelector('header');
+hamburger?.addEventListener('click', ()=> headerEl.classList.toggle('nav-open'));
