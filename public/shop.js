@@ -191,7 +191,7 @@ async function loadProducts(){
         if(found) found.qty += qty; else cart.push({id:p.id, name:p.name, price:p.price, qty});
         saveCart();
         toast('✅ Производот е додаден во кошничката');
-        document.getElementById('cartBtn').scrollIntoView({behavior:'smooth'});
+document.getElementById('cartTop')?.scrollIntoView({behavior:'smooth', block:'start'});
       };
     }
     productsWrap.appendChild(card);
@@ -261,6 +261,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 const productsEl = document.getElementById('products');
+// Делегација за кликови на "Додај во кошничка" (работи и за динамично вметнати карти)
+if (productsEl) {
+  productsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.card .btn');
+    if (!btn) return;
+
+    const card = btn.closest('.card');
+    const id = card?.dataset?.id;
+    if (!id) return;
+
+    // најди го производот по id од тековната колекција
+    const p = currentAll.find(x => String(x.id) === String(id));
+    if (!p) return;
+
+    // количина од инпут во рамки на картичката
+    const qtyInput = card.querySelector('input[type="number"]');
+    const qty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
+
+    const found = cart.find(x => String(x.id) === String(p.id));
+    if (found) found.qty += qty; else cart.push({ id: p.id, name: p.name, price: p.price, qty });
+    saveCart();
+    toast('✅ Производот е додаден во кошничката');
+
+    // скрол до кошничката (без да греши ако не постои)
+    const cartTopEl = document.getElementById('cartTop');
+    cartTopEl?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
 const loadMoreBtn = document.getElementById('loadMore');
 
 let currentAll = [];     // целата листа (по важечките филтри)
@@ -301,7 +330,7 @@ async function fetchProductsWithFilters() {
 function cardTpl(p) {
   const isSold = (p.status || 'available') === 'soldout';
   return `
-    <div class="card">
+    <div class="card" data-id="${p.id}">
       <img src="${p.imageUrl || '/img/logo.jpg'}" alt="${p.name}" />
       <h4>${p.name}</h4>
       <p>${p.description || ''}</p>
@@ -314,6 +343,7 @@ function cardTpl(p) {
       </div>
     </div>`;
 }
+
 
 // прикажува уште 10 без да ги брише претходните
 function renderNextPage(initial = false) {
@@ -374,8 +404,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!recContainer) return;
 
   // Вчитај ги сите производи
-  const res = await fetch('/data/products.json');
-  const allProducts = await res.json();
+  const res = await fetch('/api/products', { cache: 'no-store' });
+const allProducts = await res.json();
 
   let currentIndex = 0;
   const SHOW_COUNT = 3;
