@@ -1,0 +1,110 @@
+[
+  {
+    "id": "p5",
+    "name": "Бела боја 5L",
+    "price": 1450,
+    "description": "Интерьер боја, мат.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "boi",
+    "status": "available"
+  },
+  {
+    "id": "p6",
+    "name": "Цемент 25kg",
+    "price": 270,
+    "description": "Градежен цемент.",
+    "imageUrl": "/img/logo.jpg",
+    "category": "gradba",
+    "status": "available"
+  },
+  {
+    "id": "1761239542073",
+    "name": "Clever туш - црна (кратка)",
+    "price": 3499,
+    "description": "Clever туш батерија - црна,кратка",
+    "imageUrl": "/uploads/1761239539081-702402921.JPG",
+    "category": "vodovod",
+    "status": "available"
+  },
+  {
+    "id": "1761239610152",
+    "name": "Clever туш - црна (долга)",
+    "price": 3499,
+    "description": "Clever туш батерија - црна, долга",
+    "imageUrl": "/uploads/1761239600056-249344545.JPG",
+    "category": "vodovod",
+    "status": "available"
+  },
+  {
+    "id": "1761239671023",
+    "name": "Clever туш - хром (кратка)",
+    "price": 2999,
+    "description": "Clever туш батерија - хром боја, кратка",
+    "imageUrl": "/uploads/1761239669798-183043317.JPG",
+    "category": "",
+    "status": "available"
+  },
+  {
+    "id": "1761239704752",
+    "name": "Clever туш - хром (долга)",
+    "price": 2999,
+    "description": "Clever туш - хром боја, долга",
+    "imageUrl": "/uploads/1761239703432-32672059.jpg",
+    "category": "vodovod",
+    "status": "available"
+  },
+  {
+    "id": "1761239804690",
+    "name": "Clever туш - Go (кратка)",
+    "price": 3499,
+    "description": "Clever туш - G,кратка",
+    "imageUrl": "/uploads/1761239803838-284762792.JPG",
+    "category": "vodovod",
+    "status": "available"
+  },
+  {
+    "id": "1761239844317",
+    "name": "Clever туш - Go (долга)",
+    "price": 2999,
+    "description": "Clever туш - Go (долга)",
+    "imageUrl": "/uploads/1761239843435-408961076.JPG",
+    "category": "vodovod",
+    "status": "available"
+  },
+  {
+    "id": "1761239912733",
+    "name": "EMTop - Челна бруселка",
+    "price": 5999,
+    "description": "Челна бруселка",
+    "imageUrl": "",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761239945870",
+    "name": "EMTop Индустриски фен",
+    "price": 5999,
+    "description": "Фен индустриски",
+    "imageUrl": "/uploads/1761239944692-69517278.PNG",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761245651428",
+    "name": "Clever - Glow сива (кратка)",
+    "price": 1299,
+    "description": "Clever - Glow сива, кратка",
+    "imageUrl": "/uploads/1761245650035-255303171.JPG",
+    "category": "",
+    "status": "soldout"
+  },
+  {
+    "id": "1761245705864",
+    "name": "Clever - Glow сива (TST)",
+    "price": 1199,
+    "description": "Clever - Glow сива (TST) test",
+    "imageUrl": "/uploads/1761245704721-757296749.jpg",
+    "category": "vodovod",
+    "status": "soldout"
+  }
+]

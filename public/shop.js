@@ -7,16 +7,37 @@ window.addEventListener('load', ()=> setTimeout(hideLoader, 1800));
 
 // Navigation
 const navLinks = document.querySelectorAll('[data-nav]');
-function showSection(hash){
-  const id = (hash || '#home').replace('#','');
-  ['home','shop','about'].forEach(s => {
+function showSection(hash) {
+  const id = (hash || '#home').replace('#', '');
+  ['home', 'shop', 'about'].forEach(s => {
     const el = document.getElementById(s);
-    if(!el) return;
+    if (!el) return;
     el.style.display = (s === id) ? '' : 'none';
   });
-  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
-  if(id === 'shop'){ loadCategories(); loadProducts(); }
+
+  navLinks.forEach(a =>
+    a.classList.toggle('active', a.getAttribute('href') === '#' + id)
+  );
+
+  // Покажи / сокриј препорака и бројач
+  updateHomeVisibility(id === 'home');
+
+  // Ако сме во продавница — вчитај производи
+  if (id === 'shop') {
+    loadCategories();
+    loadProducts();
+  }
 }
+
+// Покажи ја само "Наша препорака" и "Бројач" ако е HOME секција
+function updateHomeVisibility(show) {
+  const rec = document.getElementById('recommend');
+  const counter = document.getElementById('infinity-counter');
+  if (!rec || !counter) return;
+  rec.style.display = show ? 'block' : 'none';
+  counter.style.display = show ? 'block' : 'none';
+}
+
 window.addEventListener('hashchange', ()=>{ showLoader(1000); showSection(location.hash); });
 showSection(location.hash || '#home');
 
@@ -329,5 +350,107 @@ if (location.hash === '#shop') {
 }
 window.addEventListener('hashchange', () => {
   if (location.hash === '#shop') fetchProductsWithFilters();
+});
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const recContainer = document.getElementById('recommendProducts');
+  const prevBtn = document.getElementById('prevRec');
+  const nextBtn = document.getElementById('nextRec');
+
+  if (!recContainer) return;
+
+  // Вчитај ги сите производи
+  const res = await fetch('/data/products.json');
+  const allProducts = await res.json();
+
+  let currentIndex = 0;
+  const SHOW_COUNT = 3;
+  const CHANGE_INTERVAL = 180000; // 3 минути
+
+  function renderRecommendations() {
+    // избери 3 производи од тековната позиција
+    const slice = allProducts.slice(currentIndex, currentIndex + SHOW_COUNT);
+
+    // ако сме на крај – wrap around
+    if (slice.length < SHOW_COUNT) {
+      const extra = allProducts.slice(0, SHOW_COUNT - slice.length);
+      slice.push(...extra);
+    }
+
+    recContainer.innerHTML = slice.map(p => `
+      <div class="card" data-id="${p.id}">
+        <img src="${p.imageUrl || '/img/logo.jpg'}" alt="${p.name}">
+        <h4>${p.name}</h4>
+        <p>${p.description || ''}</p>
+        <b>${p.price} МКД</b>
+      </div>
+    `).join('');
+  }
+
+  renderRecommendations();
+// Препораките нека се прикажуваат само кога е HOME
+updateHomeVisibility((location.hash || '#home') === '#home');
+
+// Кога се менува hash (секција)
+window.addEventListener('hashchange', () => {
+  updateHomeVisibility(location.hash === '#home');
+});
+
+  // стрелки
+  prevBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex - SHOW_COUNT + allProducts.length) % allProducts.length;
+    renderRecommendations();
+  });
+  nextBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex + SHOW_COUNT) % allProducts.length;
+    renderRecommendations();
+  });
+
+  // автоматска промена на секои 3 минути
+  setInterval(() => {
+    currentIndex = (currentIndex + SHOW_COUNT) % allProducts.length;
+    renderRecommendations();
+  }, CHANGE_INTERVAL);
+
+  // при клик на производ – оди во продавница и скрол до истиот
+  recContainer.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+    const prodId = card.dataset.id;
+
+    // префрли на продавница
+    location.hash = '#shop';
+    setTimeout(() => {
+      const productCard = document.querySelector(`#products .card[data-id="${prodId}"]`);
+      if (productCard) {
+        productCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        productCard.classList.add('highlight');
+        setTimeout(() => productCard.classList.remove('highlight'), 2000);
+      }
+    }, 700);
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const counterEl = document.getElementById('counter');
+  if (!counterEl) return;
+
+  let count = 3;
+  const target = 10;
+  const delay = 600; // милисекунди помеѓу броеви (~3 секунди вкупно)
+
+  const timer = setInterval(() => {
+    count++;
+    counterEl.textContent = count;
+    if (count >= target) {
+      clearInterval(timer);
+      setTimeout(() => {
+        counterEl.textContent = '∞';
+        counterEl.classList.add('infinity');
+      }, 600);
+    }
+  }, delay);
 });
 
