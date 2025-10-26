@@ -331,3 +331,32 @@ document.addEventListener('DOMContentLoaded', () => {
 const hamburger = document.querySelector('.hamburger');
 const headerEl = document.querySelector('header');
 hamburger?.addEventListener('click', () => headerEl.classList.toggle('nav-open'));
+
+
+// === Scroll to Cart (Mobile/Desktop) ===
+document.addEventListener('DOMContentLoaded', () => {
+  const cartNav = document.querySelector('a[href="#shop"].btn'); // копчето во менито
+  const cartTop = document.getElementById('cartTop');
+  const shopEnd = document.getElementById('shop-end');
+
+  if (cartNav) {
+    cartNav.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // отвори ја продавницата
+      location.hash = '#shop';
+
+      // мало доцнење за да се вчитаат производите
+      setTimeout(() => {
+        // 📱 ако е мобилен — скрол до долниот дел каде што е кошничката
+        if (window.innerWidth <= 768 && shopEnd) {
+          shopEnd.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        // 💻 ако е десктоп — скрол до почетокот на кошничката (десно)
+        else if (cartTop) {
+          cartTop.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 600);
+    });
+  }
+});
