@@ -34,15 +34,24 @@ function showSection(hash) {
 function updateHomeVisibility(show) {
   const rec = document.getElementById('recommend');
   const counter = document.getElementById('infinity-counter');
-  if (!rec || !counter) return;
-  rec.style.display = show ? 'block' : 'none';
-  counter.style.display = show ? 'block' : 'none';
+  const weekly = document.getElementById('weekly-deals');
+  if (rec) rec.style.display = show ? 'block' : 'none';
+  if (counter) counter.style.display = show ? 'block' : 'none';
+  if (weekly) weekly.style.display = show ? 'block' : 'none';
 }
+
+
 
 window.addEventListener('hashchange', () => {
   showLoader(1000);
   showSection(location.hash);
+
+  // Додади ова за да ги сокрие „Наша препорака“ и „Неделна акција“
+  const isHome = (location.hash || '#home') === '#home';
+  updateHomeVisibility(isHome);
 });
+
+
 showSection(location.hash || '#home');
 
 // === Toasts ===
@@ -307,6 +316,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 });
 
+
 // === Counter Animation ===
 document.addEventListener('DOMContentLoaded', () => {
   const counterEl = document.getElementById('counter');
@@ -359,4 +369,52 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 600);
     });
   }
+});
+
+// === Неделна акција ===
+document.addEventListener('DOMContentLoaded', async () => {
+  const weeklyEl = document.getElementById('weeklyProducts');
+  if (!weeklyEl) return;
+
+  const res = await fetch('/api/promotions', { cache: 'no-store' });
+  const promos = await res.json();
+
+  weeklyEl.innerHTML = promos.map(p => {
+    const newPrice = p.discount ? (p.price * (1 - p.discount / 100)).toFixed(0) : p.price;
+    return `
+      <div class="card" data-id="${p.id}" style="position:relative;">
+        ${p.discount ? `<span class="discount-badge">-${p.discount}%</span>` : ''}
+        <img src="${p.imageUrl || '/img/logo.jpg'}" alt="${p.name}" />
+        <h4>${p.name}</h4>
+        <p>${p.description || ''}</p>
+        <div>
+          ${p.discount ? `<span class="old-price">${p.price} МКД</span>` : ''}
+          <span class="new-price">${newPrice} МКД</span>
+        </div>
+        <button class="btn full">Додај во кошничка</button>
+      </div>`;
+  }).join('');
+
+  // ✅ Активирај додавање во кошничка за овие производи
+  weeklyEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.card .btn');
+    if (!btn) return;
+
+    const card = btn.closest('.card');
+    const id = card?.dataset.id;
+    const product = promos.find(x => String(x.id) === String(id));
+    if (!product) return;
+
+    const qty = 1; // секогаш 1 по default од оваа секција
+    const price = product.discount
+      ? (product.price * (1 - product.discount / 100))
+      : product.price;
+
+    const found = cart.find(x => String(x.id) === String(product.id));
+    if (found) found.qty += qty;
+    else cart.push({ id: product.id, name: product.name, price: price, qty });
+
+    saveCart();
+    toast(`✅ ${product.name} е додаден во кошничката`);
+  });
 });
