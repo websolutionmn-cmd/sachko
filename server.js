@@ -142,6 +142,14 @@ app.post('/api/order', async (req, res) => {
   }
 });
 
+// === GET /api/promotions ===
+app.get('/api/promotions', (req, res) => {
+  const products = readProducts();
+  const promos = products.filter(p => p.discount && p.discount > 0);
+  res.json(promos.slice(0, 3)); // прикажи најмногу 3 производи со попуст
+});
+
+
 // Pages
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
