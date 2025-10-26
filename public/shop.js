@@ -189,13 +189,22 @@ async function fetchProductsWithFilters() {
 
 function cardTpl(p) {
   const isSold = (p.status || 'available') === 'soldout';
+  const hasDiscount = p.discount && Number(p.discount) > 0;
+  const newPrice = hasDiscount ? (p.price * (1 - p.discount / 100)).toFixed(0) : p.price;
+
   return `
     <div class="card" data-id="${p.id}">
+      ${hasDiscount ? `<span class="discount-badge">-${p.discount}%</span>` : ''}
       <img src="${p.imageUrl || '/img/logo.jpg'}" alt="${p.name}" />
       <h4>${p.name}</h4>
       <p>${p.description || ''}</p>
-      <div class="status ${isSold ? 'bad' : 'ok'}">${isSold ? '🔴 Распродадено' : '🟢 Достапно'}</div>
-      <b>${p.price} МКД</b>
+      <div class="status ${isSold ? 'bad' : 'ok'}">
+        ${isSold ? '🔴 Распродадено' : '🟢 Достапно'}
+      </div>
+      <div class="price-block">
+        ${hasDiscount ? `<span class="old-price">${p.price} МКД</span>` : ''}
+        <b class="new-price">${newPrice} МКД</b>
+      </div>
       <div class="qty">
         <label>Количина:</label>
         <input type="number" min="1" value="1" ${isSold ? 'disabled' : ''}/>
@@ -203,6 +212,7 @@ function cardTpl(p) {
       </div>
     </div>`;
 }
+
 
 function renderNextPage(initial = false) {
   const next = currentAll.slice(renderedCount, renderedCount + PAGE);

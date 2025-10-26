@@ -780,3 +780,30 @@ nav .btn span {
   font-size: 0.85rem;
   font-weight: 700;
 }
+.discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow: var(--shadow);
+}
+
+.price-block {
+  margin-top: 6px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 8px;
+}
+
+.new-price {
+  color: var(--primary);
+  font-weight: 700;
+}
