@@ -1,29 +1,11 @@
 [
   {
-    "id": "p5",
-    "name": "Бела боја 5L",
-    "price": 1450,
-    "description": "Интерьер боја, мат.",
-    "imageUrl": "/img/logo.jpg",
-    "category": "boi",
-    "status": "available"
-  },
-  {
-    "id": "p6",
-    "name": "Цемент 25kg",
-    "price": 270,
-    "description": "Градежен цемент.",
-    "imageUrl": "/img/logo.jpg",
-    "category": "gradba",
-    "status": "available"
-  },
-  {
     "id": "1761239542073",
     "name": "Clever туш - црна (кратка)",
-    "price": 3499,
+    "price": 3498,
     "description": "Clever туш батерија - црна,кратка",
     "imageUrl": "/uploads/1761239539081-702402921.JPG",
-    "category": "vodovod",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -32,7 +14,7 @@
     "price": 3499,
     "description": "Clever туш батерија - црна, долга",
     "imageUrl": "/uploads/1761239600056-249344545.JPG",
-    "category": "vodovod",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -41,7 +23,7 @@
     "price": 2999,
     "description": "Clever туш батерија - хром боја, кратка",
     "imageUrl": "/uploads/1761239669798-183043317.JPG",
-    "category": "",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -50,7 +32,7 @@
     "price": 2999,
     "description": "Clever туш - хром боја, долга",
     "imageUrl": "/uploads/1761239703432-32672059.jpg",
-    "category": "vodovod",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -59,7 +41,7 @@
     "price": 3499,
     "description": "Clever туш - G,кратка",
     "imageUrl": "/uploads/1761239803838-284762792.JPG",
-    "category": "vodovod",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -68,25 +50,7 @@
     "price": 2999,
     "description": "Clever туш - Go (долга)",
     "imageUrl": "/uploads/1761239843435-408961076.JPG",
-    "category": "vodovod",
-    "status": "available"
-  },
-  {
-    "id": "1761239912733",
-    "name": "EMTop - Челна бруселка",
-    "price": 5999,
-    "description": "Челна бруселка",
-    "imageUrl": "",
-    "category": "alat",
-    "status": "available"
-  },
-  {
-    "id": "1761239945870",
-    "name": "EMTop Индустриски фен",
-    "price": 5999,
-    "description": "Фен индустриски",
-    "imageUrl": "/uploads/1761239944692-69517278.PNG",
-    "category": "alat",
+    "category": "sanitarija",
     "status": "available"
   },
   {
@@ -95,16 +59,628 @@
     "price": 1299,
     "description": "Clever - Glow сива, кратка",
     "imageUrl": "/uploads/1761245650035-255303171.JPG",
-    "category": "",
-    "status": "soldout"
+    "category": "sanitarija",
+    "status": "available"
   },
   {
-    "id": "1761245705864",
-    "name": "Clever - Glow сива (TST)",
-    "price": 1199,
-    "description": "Clever - Glow сива (TST) test",
-    "imageUrl": "/uploads/1761245704721-757296749.jpg",
-    "category": "vodovod",
-    "status": "soldout"
+    "id": "1761324849435",
+    "name": "TONS Проточен бојлер со чешма",
+    "price": 1000,
+    "description": "TONS Проточен бојлер со чешма \n8679\n1 година гаранција",
+    "imageUrl": "/uploads/1761324843600-547029822.png",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761324902982",
+    "name": "TONS Чешма ѕидна со проточен бојлер",
+    "price": 1000,
+    "description": "TONS Чешма ѕидна со проточен бојлер - 8671",
+    "imageUrl": "/uploads/1761324899422-995903089.png",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761324933786",
+    "name": "TONS Чешма насадна со проточен бојлер",
+    "price": 1000,
+    "description": "TONS Чешма насадна со проточен бојлер (8672)",
+    "imageUrl": "/uploads/1761324932300-696770042.jpg",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761324956566",
+    "name": "TONS Чешма насадна со проточен бојлер",
+    "price": 1000,
+    "description": "TONS Чешма насадна со проточен бојлер (8678)",
+    "imageUrl": "/uploads/1761324955347-79213422.png",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761324984854",
+    "name": "TONS Чешма насадна со проточен бојлер",
+    "price": 1000,
+    "description": "TONS Чешма насадна со проточен бојлер (9970) + 1 година гаранција",
+    "imageUrl": "/uploads/1761324983980-697693357.jpg",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761325026177",
+    "name": "TONS Чешма насадна со проточен бојлер",
+    "price": 1000,
+    "description": "TONS Чешма насадна со проточен бојлер (10959) + 1 година гаранција",
+    "imageUrl": "/uploads/1761325025204-768696115.jpg",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761325073186",
+    "name": "TONS Чешма насадна со проточен бојлер",
+    "price": 10000,
+    "description": "TONS Чешма насадна со проточен бојлер (13126) + 1 година гаранција",
+    "imageUrl": "/uploads/1761325072103-575384366.jpg",
+    "category": "sanitarija",
+    "status": "available"
+  },
+  {
+    "id": "1761325143481",
+    "name": "Електро-пневматски комби. чекан 800W 26mm AVC",
+    "price": 1000,
+    "description": "Електро-пневматски комби. чекан 800W 26mm AVC D25133K-QS",
+    "imageUrl": "/uploads/1761325142505-530691482.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325195534",
+    "name": "Emtop Батерија 4Ah 20V EBPK2002",
+    "price": 1000,
+    "description": "Батерија 4Ah 20V EBPK2002 Emtop",
+    "imageUrl": "/uploads/1761325191123-918260455.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325232789",
+    "name": "Emtop Батерија 5Ah 20V",
+    "price": 10000,
+    "description": "Батерија 5Ah 20V EBPK20031 Emtop",
+    "imageUrl": "/uploads/1761325231777-761491141.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325261983",
+    "name": "Emtop Батерија 20V 2Ah",
+    "price": 1000,
+    "description": "Батерија 20V 2Ah",
+    "imageUrl": "/uploads/1761325259988-270335010.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325303191",
+    "name": "Emtop Батериска брусилка 115мм",
+    "price": 1000,
+    "description": "Батериска брусилка 115мм ELAG211541 Emtop",
+    "imageUrl": "/uploads/1761325302081-311280821.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325346666",
+    "name": "Emtop Батериска дупчалка чекан",
+    "price": 1001,
+    "description": "Батериска дупчалка чекан ELRH202081 Emtop",
+    "imageUrl": "/uploads/1761325338000-184908288.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325382462",
+    "name": "Emtop Батериска дупчалка-одвртувач",
+    "price": 10000,
+    "description": "Батериска дупчалка-одвртувач ECDL200528 Emtop",
+    "imageUrl": "/uploads/1761325381266-488000287.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325422164",
+    "name": "Emtop Батериска убодна пила",
+    "price": 1000,
+    "description": "Батериска убодна пила ELGS208501 Emtop",
+    "imageUrl": "/uploads/1761325417459-141636427.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325452025",
+    "name": "Emtop Батериски одвртувач",
+    "price": 1000,
+    "description": "Батериски одвртувач ECSR0408 Emtop",
+    "imageUrl": "/uploads/1761325450934-819829051.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325482744",
+    "name": "Emtop Батериски ударен одвртувач ECIWL20401 Emtop",
+    "price": 1000,
+    "description": "Батериски ударен одвртувач ECIWL20401 Emtop",
+    "imageUrl": "/uploads/1761325481827-57199357.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325512473",
+    "name": "Emtop Вибрациона брусилка",
+    "price": 1000,
+    "description": "Вибрациона брусилка EFSR3206 Emtop",
+    "imageUrl": "/uploads/1761325508058-707214167.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325544326",
+    "name": "Emtop Двострана столна брусилка",
+    "price": 1000,
+    "description": "Двострана столна брусилка EBGR61501 Emtop",
+    "imageUrl": "/uploads/1761325543317-675126325.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325574573",
+    "name": "Emtop Електричен пиштол за лемење",
+    "price": 1000,
+    "description": "Електричен пиштол за лемење Emtop EESL4010",
+    "imageUrl": "/uploads/1761325573806-196144005.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325610182",
+    "name": "Emtop Електрична гипсарка",
+    "price": 1000,
+    "description": "Електрична гипсарка EDSD10501 Emtop",
+    "imageUrl": "/uploads/1761325609108-193109117.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325632138",
+    "name": "Emtop Електрична дупчалка чекан",
+    "price": 1000,
+    "description": "Електрична дупчалка чекан ERHRL651 Emtop",
+    "imageUrl": "/uploads/1761325631149-843385319.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325670394",
+    "name": "Emtop Електрична дупчалка чекан",
+    "price": 1000,
+    "description": "Електрична дупчалка чекан ERHRP1052 Emtop",
+    "imageUrl": "/uploads/1761325664933-117512938.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325692533",
+    "name": "Emtop Миксер",
+    "price": 10000,
+    "description": "Миксер EMXR14001 Emtop",
+    "imageUrl": "/uploads/1761325691432-207000016.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325715213",
+    "name": "Emtop Пиштол за лепило",
+    "price": 10000,
+    "description": "Пиштол за лепило EGGU1401 Emtop",
+    "imageUrl": "/uploads/1761325714426-442557020.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325735797",
+    "name": "Emtop Полирка 180мм",
+    "price": 1000,
+    "description": "Полирка 180мм EAPR1402 Emtop",
+    "imageUrl": "/uploads/1761325734895-179397036.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325765865",
+    "name": "Emtop Реципрочна пила 750W",
+    "price": 1000,
+    "description": "Реципрочна пила 750W ERSW7501 Emtop",
+    "imageUrl": "/uploads/1761325764738-546282869.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325793004",
+    "name": "Emtop Светилка",
+    "price": 1000,
+    "description": "Светилка eLFL2001 Emtop",
+    "imageUrl": "/uploads/1761325791807-206881353.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325817233",
+    "name": "Emtop Сет 96 алатки",
+    "price": 1000,
+    "description": "Сет 96 алатки EEDK09601 Emtop",
+    "imageUrl": "/uploads/1761325815803-626552120.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325866361",
+    "name": "Emtop Убодна пила",
+    "price": 1000,
+    "description": "Убодна пила EJSW5701 Emtop",
+    "imageUrl": "/uploads/1761325865577-815474780.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325887278",
+    "name": "Emtop Ударна дупчалка",
+    "price": 1000,
+    "description": "Ударна дупчалка EMDL0681 Emtop",
+    "imageUrl": "/uploads/1761325886298-38201269.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325911689",
+    "name": "Emtop Фен за жежок воздух 2000W",
+    "price": 1000,
+    "description": "Фен за жежок воздух 2000W EHGN20078 Emtop",
+    "imageUrl": "/uploads/1761325910862-940907021.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761325932359",
+    "name": "Emtop Циркулар 185мм",
+    "price": 1000,
+    "description": "Циркулар 185мм ECSW1855 Emtop",
+    "imageUrl": "/uploads/1761325931478-72127571.png",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327335470",
+    "name": "1-94-749",
+    "price": 1000,
+    "description": "1-94-749",
+    "imageUrl": "/uploads/1761327334212-530258138.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327378843",
+    "name": "1-95-611",
+    "price": 1000,
+    "description": "1-95-611",
+    "imageUrl": "/uploads/1761327377703-151995979.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327396830",
+    "name": "1-97-483",
+    "price": 1000,
+    "description": "1-97-483",
+    "imageUrl": "/uploads/1761327395153-240798427.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327412914",
+    "name": "1-97-517",
+    "price": 1000,
+    "description": "1-97-517",
+    "imageUrl": "/uploads/1761327411946-572179977.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327427879",
+    "name": "1-97-518",
+    "price": 1000,
+    "description": "1-97-518",
+    "imageUrl": "/uploads/1761327426684-772464206.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327445170",
+    "name": "D28730-QS",
+    "price": 1000,
+    "description": "D28730-QS",
+    "imageUrl": "/uploads/1761327444160-600779272.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327464007",
+    "name": "DCF620NT-XJ",
+    "price": 1000,
+    "description": "DCF620NT-XJ",
+    "imageUrl": "/uploads/1761327462698-61422149.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327488973",
+    "name": "DCF850E2T-QW",
+    "price": 1000,
+    "description": "DCF850E2T-QW",
+    "imageUrl": "/uploads/1761327487707-215529279.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327506194",
+    "name": "DCK211D2T-QW",
+    "price": 1000,
+    "description": "DCK211D2T-QW",
+    "imageUrl": "/uploads/1761327505530-134840381.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327523595",
+    "name": "DCK2062M2T-QW",
+    "price": 1000,
+    "description": "DCK2062M2T-QW",
+    "imageUrl": "/uploads/1761327522784-557505441.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327550052",
+    "name": "DCN890N-XJ",
+    "price": 1000,
+    "description": "DCN890N-XJ",
+    "imageUrl": "/uploads/1761327548839-568780928.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327569770",
+    "name": "DCR029-QW",
+    "price": 1000,
+    "description": "DCR029-QW",
+    "imageUrl": "/uploads/1761327568584-600030485.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327592657",
+    "name": "DCS380N-XJ",
+    "price": 1000,
+    "description": "DCS380N-XJ",
+    "imageUrl": "/uploads/1761327591246-377902795.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327607698",
+    "name": "DW055PL-XJ",
+    "price": 1000,
+    "description": "DW055PL-XJ",
+    "imageUrl": "/uploads/1761327606850-488133493.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327627588",
+    "name": "DW088K-XJ",
+    "price": 1000,
+    "description": "DW088K-XJ",
+    "imageUrl": "/uploads/1761327626602-159650350.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327667687",
+    "name": "DW088K-XJ",
+    "price": 1000,
+    "description": "DW088K-XJ",
+    "imageUrl": "/uploads/1761327665856-107545174.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327705496",
+    "name": "DWST1-81078-QW",
+    "price": 1000,
+    "description": "DWST1-81078-QW",
+    "imageUrl": "/uploads/1761327704543-618851504.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327723056",
+    "name": "DWST60122-1",
+    "price": 1000,
+    "description": "DWST60122-1",
+    "imageUrl": "/uploads/1761327722353-161614498.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327745421",
+    "name": "DWST60452-1",
+    "price": 1000,
+    "description": "DWST60452-1",
+    "imageUrl": "/uploads/1761327744490-281444788.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327785848",
+    "name": "FME190-QS",
+    "price": 1000,
+    "description": "FME190-QS",
+    "imageUrl": "/uploads/1761327785212-828170026.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327805445",
+    "name": "FME301-QS",
+    "price": 1000,
+    "description": "FME301-QS",
+    "imageUrl": "/uploads/1761327803678-663663651.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327827638",
+    "name": "FME380K-QS",
+    "price": 1000,
+    "description": "FME380K-QS",
+    "imageUrl": "/uploads/1761327826766-602305401.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327847304",
+    "name": "FMEH850K-QS",
+    "price": 1000,
+    "description": "FMEH850K-QS",
+    "imageUrl": "/uploads/1761327846607-617759309.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327864879",
+    "name": "FMST1-70749",
+    "price": 1000,
+    "description": "FMST1-70749",
+    "imageUrl": "/uploads/1761327864096-480273783.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327955075",
+    "name": "FMST1-73607",
+    "price": 1000,
+    "description": "FMST1-73607",
+    "imageUrl": "/uploads/1761327954300-283048591.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761327978620",
+    "name": "FMST1-75672",
+    "price": 1000,
+    "description": "FMST1-75672",
+    "imageUrl": "/uploads/1761327977657-406013052.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328003373",
+    "name": "M20",
+    "price": 1000,
+    "description": "M20",
+    "imageUrl": "/uploads/1761328002309-790327060.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328024186",
+    "name": "SFMEE500S-QS",
+    "price": 1000,
+    "description": "SFMEE500S-QS",
+    "imageUrl": "/uploads/1761328022713-108061041.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328043612",
+    "name": "STHT77498-1",
+    "price": 1000,
+    "description": "STHT77498-1",
+    "imageUrl": "/uploads/1761328042694-814926267.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328059482",
+    "name": "STST1-70355",
+    "price": 1000,
+    "description": "STST1-70355",
+    "imageUrl": "/uploads/1761328058350-894139312.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328078449",
+    "name": "STST1-75518",
+    "price": 1000,
+    "description": "STST1-75518",
+    "imageUrl": "/uploads/1761328077851-388608377.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328104545",
+    "name": "STST1-75521",
+    "price": 1000,
+    "description": "STST1-75521",
+    "imageUrl": "/uploads/1761328103165-725986271.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328147623",
+    "name": "STST81337-1",
+    "price": 1000,
+    "description": "STST81337-1",
+    "imageUrl": "/uploads/1761328145941-603379041.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328164790",
+    "name": "STST83397-1",
+    "price": 1000,
+    "description": "STST83397-1",
+    "imageUrl": "/uploads/1761328163893-951521970.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328192207",
+    "name": "SXVC25PTDE",
+    "price": 1000,
+    "description": "SXVC25PTDE",
+    "imageUrl": "/uploads/1761328191296-992457818.jpg",
+    "category": "alat",
+    "status": "available"
+  },
+  {
+    "id": "1761328208434",
+    "name": "SXVC35PTDE",
+    "price": 1000,
+    "description": "SXVC35PTDE",
+    "imageUrl": "/uploads/1761328207457-29056793.jpg",
+    "category": "alat",
+    "status": "available"
   }
 ]
